@@ -1,0 +1,62 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}آپلود عکس{% endblock title %}
+
+{% block content %}
+
+	<div class="py-5">
+
+		<div class="container">
+
+			<div class="row justify-content-center align-items-center" dir="rtl">
+
+
+				<form class="col-11 col-md-6" method="POST" enctype="multipart/form-data">
+
+					{% csrf_token %}
+
+					<div class="d-flex justify-content-center align-items-center w-100 flex-column border" style="background-color:#fefefe;border-radius: 7px;padding: 20px;">
+
+						<div class="mb-3 d-flex justify-content-center align-items-center w-100 flex-column" >
+					    <p class="form-label m-0 p-0" style="font-size: 1.1rem;">آپلود عکس</p>
+					  </div>
+
+						<div class="my-3 d-flex justify-content-center align-items-start w-100 flex-column" >
+					    <p class="form-label m-0 p-0" style="font-size: 0.9rem;color:#323232;">عکس خود را آپلود کنید</p>
+					    <input name="user_image" type="file" class="form-control mt-2" placeholder="شماره تلفن همراه خود را وارد کنید" style="font-size:0.8rem;">
+					    <div style="font-size:0.7rem;" class="form-text">بعد از آپلود کردن عکس آن را به فرم طوسی رنگ در می آوریم</div>
+					  </div>
+
+					  <!-- error messages -->
+          	{% if messages %}
+            	<div class="d-flex justify-content-center align-items-center w-100">
+            		<ul class="list-unstyled d-flex flex-column justify-content-center align-items-center w-100">
+            			{% for message in messages %}
+	            			<li class="d-flex justify-content-start align-items-center w-100 my-1" style="font-size: 12px;color:red;">
+	            				<span class="ms-1" style="background-color:red;height: 5px;width: 5px;border-radius: 50%;"></span>
+	            				{{ message }}
+	            			</li>
+	            		{% endfor %}
+            		</ul>
+            	</div>
+          	{% endif %}
+
+					  <div class="mt-3 mb-1 d-flex justify-content-center align-items-center w-100" >
+					  	<button type="submit" class="btn btn-sm ms-2 btn-success w-100">ارسال</button>
+					  </div>
+
+					</div>
+					
+				</form>
+
+					
+				
+			</div>
+			
+		</div>
+		
+	</div>
+
+{% endblock content %}
